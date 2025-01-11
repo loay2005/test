@@ -31,6 +31,7 @@ public:
 	}
 	void display() {
 		Node* current = head;
+
 		while (current != NULL) {
 			cout << current->item << " -> ";
 			current = current->next;
@@ -38,9 +39,17 @@ public:
 		cout << endl;
 	}
 	void displayD() {
+		if (Dhead == NULL) {
+			cout << "The list is empty." << endl;
+			return;  // Return early if the list is empty.
+		}
+
 		DNode* current = Dhead;
 		while (current != NULL) {
-			cout << current->item << " -> ";
+			cout << current->item;
+			if (current->next != NULL) {
+				cout << " <-> ";  // Use <-> for doubly linked list display
+			}
 			current = current->next;
 		}
 		cout << endl;

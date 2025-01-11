@@ -128,12 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="graphs.cpp" />
+    <ClCompile Include="hash.cpp" />
     <ClCompile Include="infixPostfix.cpp" />
     <ClCompile Include="linkedList.cpp" />
     <ClCompile Include="search.cpp" />
     <ClCompile Include="searchTree.cpp" />
     <ClCompile Include="stackQueue.cpp" />
-    <ClCompile Include="testttttt.cpp" />
+    <ClCompile Include="Gym-Management.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="client.h" />
