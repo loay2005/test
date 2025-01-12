@@ -31,7 +31,7 @@ void display(int table[]) {
         else
             cout << "  " << i << "   |   " << table[i] << "\n";
     }
-}
+}-
 
 int main() {
     int hashTable[MAX];
