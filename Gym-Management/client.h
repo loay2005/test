@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iostream>
 using namespace std;
 
@@ -16,13 +14,13 @@ private:
     int id;
     string fullname;
     int age;
-    int phoneNumber;
+    string phoneNumber;  // Changed phoneNumber to string
     market cart[10]; // Fixed-size array for storing purchased items
     int cartSize; // Counter for items in the cart
 
 public:
     // Constructor
-    client(int id, string fullname, int age, int phoneNumber) {
+    client(int id, string fullname, int age, string phoneNumber) {
         this->id = id;
         this->fullname = fullname;
         this->age = age;
@@ -36,9 +34,9 @@ public:
 
         // 2D Array: Rows = Meals, Columns = Different Sizes
         market menu[3][3] = {
-            { {"Chicken", 'S', 4.99}, {"Chicken", 'M', 6.99}, {"Chicken", 'L', 8.99} },
-            { {"Fish", 'S', 3.99}, {"Fish", 'M', 5.99}, {"Fish", 'L', 7.99} },
-            { {"Milkshake", 'S', 2.49}, {"Milkshake", 'M', 3.49}, {"Milkshake", 'L', 4.49} }
+            { {4.99, "Chicken", 'S'}, {6.99, "Chicken", 'M'}, {8.99, "Chicken", 'L'} },
+            { {3.99, "Fish", 'S'}, {5.99, "Fish", 'M'}, {7.99, "Fish", 'L'} },
+            { {2.49, "Milkshake", 'S'}, {3.49, "Milkshake", 'M'}, {4.49, "Milkshake", 'L'} }
         };
 
         // Displaying the menu
@@ -108,7 +106,7 @@ public:
         printBill(); // Call billing function after shopping
     }
 
-    // Function to print the final bill
+    // Function to print the final bill with tax
     void printBill() {
         if (cartSize == 0) {
             cout << "Your cart is empty. No items to bill.\n";
@@ -116,6 +114,9 @@ public:
         }
 
         float total = 0;
+        float taxRate = 0.16;  // Tax rate (16%)
+        float taxAmount = 0;
+
         cout << "\n********** BILL **********\n";
         cout << "Item\t\tSize\tPrice\n";
         cout << "-----------------------------\n";
@@ -125,8 +126,14 @@ public:
             total += cart[i].price;
         }
 
+        // Calculate tax
+        taxAmount = total * taxRate;
+        total += taxAmount;  // Add tax to total amount
+
         cout << "-----------------------------\n";
-        cout << "Total Amount: $" << total << endl;
+        cout << "Subtotal: \t\t$" << total - taxAmount << endl;  // Subtotal without tax
+        cout << "Tax (16%): \t\t$" << taxAmount << endl;
+        cout << "Total Amount: \t\t$" << total << endl;
         cout << "*****************************\n";
     }
 
